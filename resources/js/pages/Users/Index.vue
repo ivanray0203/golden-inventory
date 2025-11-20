@@ -1,9 +1,10 @@
 <script setup>
 import UserController from '@/actions/App/Http/Controllers/UserController';
 import { index as usersIndex } from '@/routes/users';
-import { Head, router } from '@inertiajs/vue3';
+import { Head, router, usePage } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
+import AlertSuccess from '@/components/AlertSuccess.vue';
 import HeadingSmall from '@/components/HeadingSmall.vue';
 import UserForm from '@/components/UserForm.vue';
 import { Badge } from '@/components/ui/badge';
@@ -29,6 +30,8 @@ const props = defineProps({
         required: true,
     },
 });
+
+const page = usePage();
 
 const breadcrumbs = [
     {
@@ -76,6 +79,11 @@ const handleDelete = (userId) => {
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
+            <AlertSuccess
+                v-if="page.props.flash?.success"
+                :message="page.props.flash.success"
+            />
+
             <div class="flex items-center justify-between">
                 <HeadingSmall
                     title="Users"
