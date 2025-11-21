@@ -14,9 +14,10 @@ import {
 import { dashboard } from '@/routes';
 import { index as branchesIndex } from '@/routes/branches';
 import { index as productClassesIndex } from '@/routes/product-classes';
+import { index as unitsIndex } from '@/routes/units';
 import { index as usersIndex } from '@/routes/users';
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, Building2, Folder, LayoutGrid, Package, Users } from 'lucide-vue-next';
+import { BookOpen, Building2, Folder, LayoutGrid, Package, Ruler, Users } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
 
 const mainNavItems = [
@@ -39,6 +40,11 @@ const mainNavItems = [
         title: 'Product Classes',
         href: productClassesIndex(),
         icon: Package,
+    },
+    {
+        title: 'Units',
+        href: unitsIndex(),
+        icon: Ruler,
     },
 ];
 
